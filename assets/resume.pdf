@@ -6,11 +6,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Sridhar Mocherla</title>
+  <title>Resume</title>
   <meta name="description" content="A profile of my academic projects, work experience and my brief thoughts on computer science problems. Website under construction">
 
   <link rel="stylesheet" href="/assets/main.css">
-  <link rel="canonical" href="http://localhost:4000/">
+  <link rel="canonical" href="http://localhost:4000/assets/resume.pdf">
   <link rel="alternate" type="application/rss+xml" title="Sridhar Mocherla" href="/feed.xml">
   
   
@@ -64,38 +64,18 @@
 
     <main class="page-content" aria-label="Content">
       <div class="wrapper">
-        <div class="home">
+        <article class="post">
 
-  <h1 class="page-heading">Posts</h1>
-  
-  
+  <header class="post-header">
+    <h1 class="post-title">Resume</h1>
+  </header>
 
-
-  <ul class="post-list">
+  <div class="post-content">
     
-      <li>
-        
-        <span class="post-meta">May 20, 2017</span>
 
-        <h2>
-          <a class="post-link" href="/posts/2017/05/20/Scatterplot-matrices-using-openFrameworks.html">Scatterplot matrices using openFrameworks</a>
-        </h2>
-      </li>
-    
-      <li>
-        
-        <span class="post-meta">May 10, 2017</span>
+  </div>
 
-        <h2>
-          <a class="post-link" href="/posts/2017/05/10/welcome-to-my-homepage.html">Welcome to my homepage!</a>
-        </h2>
-      </li>
-    
-  </ul>
-
-  <p class="rss-subscribe">subscribe <a href="/feed.xml">via RSS</a></p>
-
-</div>
+</article>
 
       </div>
     </main>

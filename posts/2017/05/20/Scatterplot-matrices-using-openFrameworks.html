@@ -6,11 +6,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Sridhar Mocherla</title>
-  <meta name="description" content="A profile of my academic projects, work experience and my brief thoughts on computer science problems. Website under construction">
+  <title>Scatterplot matrices using openFrameworks</title>
+  <meta name="description" content="In my first post, I will discuss a popular technique to visualize high dimensional quantitative data using Scatterplot Matrices (SPLOMs) using a C++ creative...">
 
   <link rel="stylesheet" href="/assets/main.css">
-  <link rel="canonical" href="http://localhost:4000/">
+  <link rel="canonical" href="http://localhost:4000/posts/2017/05/20/Scatterplot-matrices-using-openFrameworks.html">
   <link rel="alternate" type="application/rss+xml" title="Sridhar Mocherla" href="/feed.xml">
   
   
@@ -64,38 +64,37 @@
 
     <main class="page-content" aria-label="Content">
       <div class="wrapper">
-        <div class="home">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
 
-  <h1 class="page-heading">Posts</h1>
-  
-  
-
-
-  <ul class="post-list">
-    
-      <li>
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">Scatterplot matrices using openFrameworks</h1>
+    <p class="post-meta">
+      <time datetime="2017-05-20T20:36:06-07:00" itemprop="datePublished">
         
-        <span class="post-meta">May 20, 2017</span>
+        May 20, 2017
+      </time>
+      </p>
+  </header>
 
-        <h2>
-          <a class="post-link" href="/posts/2017/05/20/Scatterplot-matrices-using-openFrameworks.html">Scatterplot matrices using openFrameworks</a>
-        </h2>
-      </li>
-    
-      <li>
-        
-        <span class="post-meta">May 10, 2017</span>
+  <div class="post-content" itemprop="articleBody">
+    <p>In my first post, I will discuss a popular technique to visualize high dimensional quantitative data using <strong>Scatterplot Matrices (SPLOMs)</strong> using a C++ creative coding library called <strong>openFrameworks</strong>, which abstracts much of the rendering functionality using <strong>GLFW</strong>, <strong>OpenGL</strong> and other standard libraries. This helps a viz developer to solely focuse on designing and coding the required visualization and not worry about low-level OpenGL calls. openFrameworks also introduces the concept of “add-ons” which allows the community to develop their own pluggable components which can be leveraged by others. All openFrameworks projects are built using CMake and here we shall require an addon <a href="https://github.com/BildPeter/ofxCMake">ofxCMake</a> for building the solution. For more information on using openFrameworks, follow this useful <a href="http://openframeworks.cc/learning/#ofBook">link</a>.</p>
 
-        <h2>
-          <a class="post-link" href="/posts/2017/05/10/welcome-to-my-homepage.html">Welcome to my homepage!</a>
-        </h2>
-      </li>
-    
-  </ul>
+<p>Scatterplots are 2-D plots which employ rectilinear layout to visualize relationship between two quantitative variables. For a multi-dimensional dataset, we would like to visualize the relationships between different pairs of attributes simultaneously. To this end, we build a “matrix” of scatterplots where each cell of the matrix is a scatterplot between the variables denoting that particular row and column. Without interaction, SPLOMs are fairely useless to find relationships especially if the dataset has thousands of instances.</p>
 
-  <p class="rss-subscribe">subscribe <a href="/feed.xml">via RSS</a></p>
+<p>One key interaction implemented typically in SPLOMs is brushing with linked highlighting. This means a user can select a portion of data in a particular scatterplot using rectangular selection and the corresponding data points are selected in all the other scatterplots. Visually, this can be implemented by greying out the non-selected points and highlighting the selected points using a color.</p>
 
-</div>
+<p>SPLOMs in viz terminology are also implementation of the “Small multiples” principles advocated by Edward Tufte. Coming back to the implementation of this in SPLOMs, we use a number of mouse event handlers and fairly straightforward draw calls to display the plots. For reading in the data, we implement a simple <code class="highlighter-rouge">TableReader</code> class to read in the data and the attribute names.</p>
+
+<p>The end result looks something like below:</p>
+
+<p><img src="https://raw.githubusercontent.com/srmocher/of-SPLOMs/master/screenshots/A03P03ReportImg04.png" alt="alt text" title="Scatterplot matricues for Mileage dataset" /></p>
+
+<p><a href="https://github.com/srmocher/of-SPLOMs">Source code</a></p>
+
+  </div>
+
+  
+</article>
 
       </div>
     </main>
