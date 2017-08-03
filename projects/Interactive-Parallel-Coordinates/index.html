@@ -31,22 +31,26 @@ Powered by Hydejack v6.5.0 (https://qwtel.com/hydejack/)
 
 
 
-  <title>Sridhar</title>
+  <title>Interactive Parallel Coordinates &middot; Sridhar</title>
 
 
 
-<meta name="description" content="Computer Science student, Software Engineer.
+<meta name="description" content="Visualizing high-dimensional data using Parallel coordinates in openFrameworks.
 ">
 
 
 
 
-<link rel="canonical" href="http://localhost:4000/">
+<link rel="canonical" href="http://localhost:4000/projects/Interactive-Parallel-Coordinates/">
 
 <link rel="alternate" type="application/atom+xml" title="Sridhar Feed" href="http://localhost:4000/feed.xml">
 
 
+  <link rel="prev" href="http://localhost:4000/projects/Scatterplot-matrices-using-openFrameworks/">
 
+
+
+  <link rel="next" href="http://localhost:4000/projects/3d-scalar-fields/">
 
 
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
@@ -143,9 +147,137 @@ Powered by Hydejack v6.5.0 (https://qwtel.com/hydejack/)
 <div id="_yPushState">
   <div class="fade-in">
     <main id="_main" class="content" role="main" data-color="#4f86aa" data-image="/assets/img/rain.jpg">
-      
+      <!--[if gt IE 8]><!---->
+<style>.grid{margin-left:-1rem;display:flex;flex-wrap:wrap}.grid::after{content:"";display:table;clear:both}.col{float:left;padding-left:1rem;margin-bottom:1rem;width:100%;display:flex}@media screen and (min-width: 40em){.col-1-2{width:50%}}@media screen and (min-width: 54em){.col-1-2{width:100%}}@media screen and (min-width: 60em){.col-1-2{width:50%}}@media print{.grid{display:block}.col{display:block;width:50%}}.card{width:100%;background:#fff;border:1px solid #eee;text-align:center;padding-bottom:0.75rem;margin-bottom:1rem;contain:content;overflow:hidden;border-radius:.25rem;page-break-inside:avoid}.card>a>.img{margin-bottom:0;border-bottom:1px solid #eee;border-top:1px solid #eee;position:relative;top:-1px}.card>.name,.card>.caption{padding:0 1rem}.card>.name{display:block;text-align:center;font-size:1rem;margin-top:0.75rem;margin-bottom:0.25rem;color:inherit}.card>.caption{margin:0.25rem 0;font-size:smaller;color:#787878}.card>.caption>p{margin-bottom:0}
+</style>
+<!--<![endif]-->
+
+
 
 <article class="page" role="article">
+  <header>
+    <h1 class="page-title">Interactive Parallel Coordinates</h1>
+
+    <p class="post-date heading">
+      
+      
+        <a href="/projects/" data-flip="title">Projects</a>
+        |
+      
+      <time datetime="2017-05-21T00:00:00-07:00">2017</time>
+      <span style="float:right">
+        <span class="sr-only">Links:</span>
+        
+          <a href="https://github.com/srmocher/of-ParallelCoordinates">Source</a>
+          
+        
+      </span>
+    </p>
+
+    <div class="img lead sixteen-nine">
+      
+        
+  
+
+  
+
+  <img
+    src="/assets/img/parallelcoordinates.gif"
+    
+    alt="Screenshot"
+    srcset="/assets/img/parallelcoordinates.gif 1920w,/assets/img/parallelcoordinates.gif 960w,/assets/img/parallelcoordinates.gif 480w"
+    sizes="(min-width: 92em) 48rem, (min-width: 54em) 42rem, (min-width: 40em) 37.5rem, 100vw"
+  />
+
+
+      
+    </div>
+
+    
+  
+  
+<p class="message">Visualizing high-dimensional data using Parallel coordinates in openFrameworks.</p>
+
+
+
+
+  </header>
+
+  <p>In my <a href="/projects/Scatterplot-matrices-using-openFrameworks">previous</a> post, I talked about using Scatterplot Matrices (SPLOMs) to visualize multi-dimensional quantitative data using a grid of scatterplots. With growing number of attributes, this approach becomes unsuitable both for rendering and interpretation - the scatterplots are made smaller to accommodate which consequently makes it harder for the user to interpret as the data points in an individual scatterplot become occluded. If there are more than 4-5 attributes, then an alternative to SPLOMs is required. To this end, Parallel Coordinates scale well to higher dimensions without the defects of SPLOMs.</p>
+
+<p>Parallel Coordinates employ a parallel layout (in contrast to the rectilinear layout in SPLOMs) where each dimension is represented as a vertical axis and all the axes are equally spaced. Data points are represented by lines passing through all the axes at corresponding values. If lines between two axes are crossed, then it generally indicates negative correlation.</p>
+
+<p>But parallel coordinates, in static form do not offer enough tools for the user to discover all possible relationships/trends between attributes. There are many different useful interactions that can be implemented, I discuss 3 such interactions implemented that greatly help in deciphering trends/relationships - <strong>Brushing with filtering and interactive legends, axis inversion and axis reordering</strong>.</p>
+
+<p>Brushing with filtering is done through a rectangular selection on one ore more axis. Only lines contained in the selection for that axes are displayed across all the axes. Further filters, if added will filter only on the data being displayed. Interactive legends are a form of <strong>scented widgets</strong> which present visual cues about the data being displayed. Here, legends get updated when filtering is done. Axis inversion inverts the scale for the selected axis (top to bottom or vice versa). Axis reordering is a very important interaction that allows the user to drag and reorder axes. Its significance lies in the fact that it gives user the flexibility to choose any attributes of his/her choice and observe the relationship between them.</p>
+
+<p>Another aspect that I have dealt with here is with missing data - no data for a particular attribute in a row. A special missing data horizontal axes is created at the below all the data axes and data points having missing attribute values will have lines intersecting this special axis below the data axes for whom it possessed no value.</p>
+
+<p>As before, we use C++ based library openFrameworks for rendering the interactive parallel coordinates visualization. The C++ class abstraction looks something like below</p>
+
+<div class="language-c++ highlighter-rouge"><pre class="highlight"><code><span class="k">class</span> <span class="nc">ParallelPlot</span>
+<span class="p">{</span>
+<span class="k">private</span><span class="o">:</span>
+	<span class="kt">int</span> <span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> <span class="n">axisLength</span><span class="p">;</span>
+	<span class="n">vector</span><span class="o">&lt;</span><span class="n">Column</span><span class="o">&gt;</span> <span class="n">columns</span><span class="p">;</span>
+	<span class="n">vector</span><span class="o">&lt;</span><span class="n">CatColor</span><span class="o">&gt;</span> <span class="n">colors</span><span class="p">;</span>
+	<span class="n">vector</span><span class="o">&lt;</span><span class="n">Column</span><span class="o">&gt;</span> <span class="n">mappedColumns</span><span class="p">;</span>
+	<span class="n">vector</span><span class="o">&lt;</span><span class="n">Filter</span><span class="o">&gt;</span> <span class="n">filters</span><span class="p">;</span>
+	<span class="kt">void</span> <span class="n">drawLabels</span><span class="p">();</span>
+	<span class="kt">void</span> <span class="n">drawAxes</span><span class="p">();</span>
+	<span class="kt">void</span> <span class="n">drawPoints</span><span class="p">();</span>
+	<span class="kt">void</span> <span class="n">drawRange</span><span class="p">();</span>
+	<span class="kt">void</span> <span class="n">drawSelection</span><span class="p">();</span>
+	<span class="kt">void</span> <span class="n">resetPoints</span><span class="p">();</span>
+	<span class="kt">void</span> <span class="n">reorderAxes</span><span class="p">(</span><span class="kt">int</span> <span class="n">first</span><span class="p">,</span><span class="kt">int</span> <span class="n">second</span><span class="p">);</span> <span class="c1">// reordering axes
+</span>	<span class="kt">void</span> <span class="n">drawLegend</span><span class="p">();</span>
+	<span class="kt">void</span> <span class="n">invertAxis</span><span class="p">(</span><span class="kt">int</span><span class="p">);</span> <span class="c1">// inversion of axis
+</span>	<span class="n">vector</span><span class="o">&lt;</span><span class="n">Column</span><span class="o">&gt;</span> <span class="n">mapData</span><span class="p">();</span>
+	<span class="kt">bool</span> <span class="n">checkFilterExists</span><span class="p">(</span><span class="n">Column</span><span class="p">);</span>
+	<span class="kt">void</span> <span class="n">setupColorMapForCategories</span><span class="p">();</span>
+	<span class="kt">void</span> <span class="n">showSelectedPoints</span><span class="p">();</span>
+	<span class="n">ofColor</span> <span class="n">getColorForRow</span><span class="p">(</span><span class="kt">int</span><span class="p">);</span> <span class="c1">// get color for row based on category
+</span>	<span class="n">CatColor</span> <span class="n">getCatColor</span><span class="p">(</span><span class="n">string</span><span class="p">);</span> <span class="c1">// coloring for legend
+</span>	<span class="kt">void</span> <span class="n">setCatColor</span><span class="p">(</span><span class="n">CatColor</span><span class="p">);</span>
+	<span class="kt">int</span> <span class="n">x_pos</span><span class="p">,</span> <span class="n">y_pos</span><span class="p">;</span>
+	<span class="kt">bool</span> <span class="n">registeredEvents</span> <span class="o">=</span> <span class="nb">false</span><span class="p">,</span><span class="n">leftPressed</span><span class="p">;</span>
+	<span class="kt">int</span> <span class="n">selectionStartX</span><span class="p">,</span> <span class="n">selectionStartY</span><span class="p">,</span> <span class="n">selectionEndX</span><span class="p">,</span> <span class="n">selectionEndY</span><span class="p">,</span><span class="n">selectableColumnIndex</span><span class="p">,</span><span class="n">columnDraggedIndex</span><span class="p">;</span>
+	<span class="kt">bool</span> <span class="n">canSelectionStart</span> <span class="o">=</span> <span class="nb">false</span><span class="p">,</span> <span class="n">canDrawSelection</span> <span class="o">=</span> <span class="nb">false</span><span class="p">,</span> <span class="n">dragging</span> <span class="o">=</span> <span class="nb">false</span><span class="p">,</span><span class="n">columnDragged</span><span class="o">=</span><span class="nb">true</span><span class="p">;</span>
+	<span class="kt">float</span> <span class="n">currentColInitialPosition</span><span class="p">;</span>
+	<span class="kt">int</span> <span class="n">legendColumnIndex</span><span class="p">,</span><span class="n">numCategorical</span><span class="p">,</span><span class="n">numCategoricalAttributes</span><span class="p">;</span>
+	<span class="n">map</span><span class="o">&lt;</span><span class="n">string</span><span class="p">,</span> <span class="n">ofColor</span><span class="o">&gt;</span> <span class="n">colorMap</span><span class="p">;</span>
+	<span class="kt">void</span> <span class="n">generateColors</span><span class="p">();</span>
+        <span class="kt">bool</span> <span class="n">isPointFiltered</span><span class="p">(</span><span class="kt">int</span><span class="p">);</span> <span class="c1">// point part of the filtered data or not
+</span>   
+<span class="k">public</span><span class="o">:</span>
+	<span class="kt">void</span> <span class="n">setup</span><span class="p">(</span><span class="kt">int</span> <span class="n">w</span><span class="p">,</span><span class="kt">int</span> <span class="n">h</span><span class="p">,</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">Column</span><span class="o">&gt;</span><span class="p">,</span><span class="kt">int</span><span class="p">,</span><span class="kt">int</span><span class="p">,</span><span class="kt">int</span><span class="p">);</span> <span class="c1">// bootstrap method
+</span>	<span class="kt">void</span> <span class="n">draw</span><span class="p">();</span>
+	<span class="kt">void</span> <span class="n">mouseMoved</span><span class="p">(</span><span class="n">ofMouseEventArgs</span> <span class="o">&amp;</span> <span class="n">args</span><span class="p">);</span>
+	<span class="kt">void</span> <span class="n">mouseDragged</span><span class="p">(</span><span class="n">ofMouseEventArgs</span> <span class="o">&amp;</span> <span class="n">args</span><span class="p">);</span>
+	<span class="kt">void</span> <span class="n">mousePressed</span><span class="p">(</span><span class="n">ofMouseEventArgs</span> <span class="o">&amp;</span> <span class="n">args</span><span class="p">);</span>
+	<span class="kt">void</span> <span class="n">mouseReleased</span><span class="p">(</span><span class="n">ofMouseEventArgs</span> <span class="o">&amp;</span> <span class="n">args</span><span class="p">);</span>
+	<span class="kt">void</span> <span class="n">mouseScrolled</span><span class="p">(</span><span class="n">ofMouseEventArgs</span> <span class="o">&amp;</span> <span class="n">args</span><span class="p">);</span>
+	<span class="kt">void</span> <span class="n">mouseEntered</span><span class="p">(</span><span class="n">ofMouseEventArgs</span> <span class="o">&amp;</span> <span class="n">args</span><span class="p">);</span>
+	<span class="kt">void</span> <span class="n">mouseExited</span><span class="p">(</span><span class="n">ofMouseEventArgs</span> <span class="o">&amp;</span> <span class="n">args</span><span class="p">);</span>
+	
+<span class="p">};</span>
+
+</code></pre>
+</div>
+<p>The method names are mostly self-explanatory as to their functionality.</p>
+
+
+</article>
+
+
+  <hr class="dingbat" />
+
+
+
+
+
+  <aside class="author" role="complementary">
+    <div class="author">
   
     
   
@@ -163,33 +295,128 @@ Powered by Hydejack v6.5.0 (https://qwtel.com/hydejack/)
 
   
 
-  <h1 class="page-title hr" style="padding-bottom:1rem">Welcome</h1>
+  <h2 class="page-title hr">
+    About
+  </h2>
 
   <p>Computer Science student, Software Engineer.</p>
 
 
-  <!--[if gt IE 8]><!---->
-<style>.grid{margin-left:-1rem;display:flex;flex-wrap:wrap}.grid::after{content:"";display:table;clear:both}.col{float:left;padding-left:1rem;margin-bottom:1rem;width:100%;display:flex}@media screen and (min-width: 40em){.col-1-2{width:50%}}@media screen and (min-width: 54em){.col-1-2{width:100%}}@media screen and (min-width: 60em){.col-1-2{width:50%}}@media print{.grid{display:block}.col{display:block;width:50%}}.card{width:100%;background:#fff;border:1px solid #eee;text-align:center;padding-bottom:0.75rem;margin-bottom:1rem;contain:content;overflow:hidden;border-radius:.25rem;page-break-inside:avoid}.card>a>.img{margin-bottom:0;border-bottom:1px solid #eee;border-top:1px solid #eee;position:relative;top:-1px}.card>.name,.card>.caption{padding:0 1rem}.card>.name{display:block;text-align:center;font-size:1rem;margin-top:0.75rem;margin-bottom:0.25rem;color:inherit}.card>.caption{margin:0.25rem 0;font-size:smaller;color:#787878}.card>.caption>p{margin-bottom:0}
-</style>
-<!--<![endif]-->
-
-<h2 id="what-is-this-website-about">What is this website about?</h2>
-
-<p>Thank you for visiting my website! This is my personal website listing down a select portfolio of my projects, my resume and contact information.</p>
-
-<p>I have built this website to pen some random thoughts and provide an overview of my projects to an external audience.</p>
-
-
-
-  <h2>Selected Projects</h2>
   
+    <div class="sidebar-social">
+      <span class="sr-only">Social:</span>
+<ul>
   
     
 
-    <div class="grid">
 
-    <div class="col col-1-2">
-      
+
+
+
+
+
+
+
+
+
+
+
+<li>
+  <a href="https://twitter.com/SridharMocherla" title="Twitter">
+    <span class="icon-twitter"></span>
+    <span class="sr-only">Twitter</span>
+  </a>
+</li>
+
+  
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li>
+  <a href="https://github.com/srmocher" title="GitHub">
+    <span class="icon-github"></span>
+    <span class="sr-only">GitHub</span>
+  </a>
+</li>
+
+  
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li>
+  <a href="http://stackoverflow.com/users/4031150/sridhar" title="Stack Overflow">
+    <span class="icon-stackoverflow"></span>
+    <span class="sr-only">Stack Overflow</span>
+  </a>
+</li>
+
+  
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li>
+  <a href="mailto:sridhar.mocherla@outlook.com" title="Email">
+    <span class="icon-mail"></span>
+    <span class="sr-only">Email</span>
+  </a>
+</li>
+
+  
+
+  
+
+  
+</ul>
+
+    </div>
+  
+</div>
+
+  </aside>
+
+
+
+
+
+
+  <h2>Other Projects</h2>
+  <div class="grid">
+    
+    
+      <div class="col col-1-2">
         
 
 <div class="card">
@@ -222,21 +449,12 @@ Powered by Hydejack v6.5.0 (https://qwtel.com/hydejack/)
   
 </div>
 
-      
-    </div>
-
+      </div>
     
 
     
-
     
-  
-    
-
-    
-
-    <div class="col col-1-2">
-      
+      <div class="col col-1-2">
         
 
 <div class="card">
@@ -269,36 +487,10 @@ Powered by Hydejack v6.5.0 (https://qwtel.com/hydejack/)
   
 </div>
 
-      
-    </div>
-
-    </div>
-
+      </div>
     
-      
-    
+  </div>
 
-    
-  
-
-
-
-  
-  
-    <p class="read-more" style="margin-top:0">See <a class="heading" href="/projects/" data-flip="title">Projects</a> for more</p>
-  
-
-
-
-  <h2 class="hr">Recent Posts</h2>
-  <ul class="related-posts" style="margin-bottom:2rem">
-    
-  </ul>
-
-
-
-
-</article>
 
 
       

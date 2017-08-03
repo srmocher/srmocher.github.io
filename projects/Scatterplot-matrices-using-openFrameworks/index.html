@@ -31,22 +31,24 @@ Powered by Hydejack v6.5.0 (https://qwtel.com/hydejack/)
 
 
 
-  <title>Sridhar</title>
+  <title>Scatterplot matrices using openFrameworks &middot; Sridhar</title>
 
 
 
-<meta name="description" content="Computer Science student, Software Engineer.
+<meta name="description" content="The SPLOMs with interaction were implemented in C++ using openFrameworks.
 ">
 
 
 
 
-<link rel="canonical" href="http://localhost:4000/">
+<link rel="canonical" href="http://localhost:4000/projects/Scatterplot-matrices-using-openFrameworks/">
 
 <link rel="alternate" type="application/atom+xml" title="Sridhar Feed" href="http://localhost:4000/feed.xml">
 
 
 
+
+  <link rel="next" href="http://localhost:4000/projects/Interactive-Parallel-Coordinates/">
 
 
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
@@ -143,9 +145,82 @@ Powered by Hydejack v6.5.0 (https://qwtel.com/hydejack/)
 <div id="_yPushState">
   <div class="fade-in">
     <main id="_main" class="content" role="main" data-color="#4f86aa" data-image="/assets/img/rain.jpg">
-      
+      <!--[if gt IE 8]><!---->
+<style>.grid{margin-left:-1rem;display:flex;flex-wrap:wrap}.grid::after{content:"";display:table;clear:both}.col{float:left;padding-left:1rem;margin-bottom:1rem;width:100%;display:flex}@media screen and (min-width: 40em){.col-1-2{width:50%}}@media screen and (min-width: 54em){.col-1-2{width:100%}}@media screen and (min-width: 60em){.col-1-2{width:50%}}@media print{.grid{display:block}.col{display:block;width:50%}}.card{width:100%;background:#fff;border:1px solid #eee;text-align:center;padding-bottom:0.75rem;margin-bottom:1rem;contain:content;overflow:hidden;border-radius:.25rem;page-break-inside:avoid}.card>a>.img{margin-bottom:0;border-bottom:1px solid #eee;border-top:1px solid #eee;position:relative;top:-1px}.card>.name,.card>.caption{padding:0 1rem}.card>.name{display:block;text-align:center;font-size:1rem;margin-top:0.75rem;margin-bottom:0.25rem;color:inherit}.card>.caption{margin:0.25rem 0;font-size:smaller;color:#787878}.card>.caption>p{margin-bottom:0}
+</style>
+<!--<![endif]-->
+
+
 
 <article class="page" role="article">
+  <header>
+    <h1 class="page-title">Scatterplot matrices using openFrameworks</h1>
+
+    <p class="post-date heading">
+      
+      
+        <a href="/projects/" data-flip="title">Projects</a>
+        |
+      
+      <time datetime="2017-05-15T00:00:00-07:00">2017</time>
+      <span style="float:right">
+        <span class="sr-only">Links:</span>
+        
+          <a href="https://github.com/srmocher/of-SPLOMs">Source</a>
+          
+        
+      </span>
+    </p>
+
+    <div class="img lead sixteen-nine">
+      
+        
+  
+
+  
+
+  <img
+    src="https://raw.githubusercontent.com/srmocher/of-SPLOMs/master/screenshots/A03P03ReportImg04.png"
+    
+    alt="Screenshot"
+    srcset="https://raw.githubusercontent.com/srmocher/of-SPLOMs/master/screenshots/A03P03ReportImg04.png 1920w,https://raw.githubusercontent.com/srmocher/of-SPLOMs/master/screenshots/A03P03ReportImg04.png 960w,https://raw.githubusercontent.com/srmocher/of-SPLOMs/master/screenshots/A03P03ReportImg04.png 480w"
+    sizes="(min-width: 92em) 48rem, (min-width: 54em) 42rem, (min-width: 40em) 37.5rem, 100vw"
+  />
+
+
+      
+    </div>
+
+    
+  
+  
+<p class="message">The SPLOMs with interaction were implemented in C++ using openFrameworks.</p>
+
+
+
+
+  </header>
+
+  <p>In my first post, I will discuss a popular technique to visualize high dimensional quantitative data using <strong>Scatterplot Matrices (SPLOMs)</strong> using a C++ creative coding library called <strong>openFrameworks</strong>, which abstracts much of the rendering functionality using <strong>GLFW</strong>, <strong>OpenGL</strong> and other standard libraries. This helps a viz developer to solely focuse on designing and coding the required visualization and not worry about low-level OpenGL calls. openFrameworks also introduces the concept of “add-ons” which allows the community to develop their own pluggable components which can be leveraged by others. All openFrameworks projects are built using CMake and here we shall require an addon <a href="https://github.com/BildPeter/ofxCMake">ofxCMake</a> for building the solution. For more information on using openFrameworks, follow this useful <a href="http://openframeworks.cc/learning/#ofBook">link</a>.</p>
+
+<p>Scatterplots are 2-D plots which employ rectilinear layout to visualize relationship between two quantitative variables. For a multi-dimensional dataset, we would like to visualize the relationships between different pairs of attributes simultaneously. To this end, we build a “matrix” of scatterplots where each cell of the matrix is a scatterplot between the variables denoting that particular row and column. Without interaction, SPLOMs are fairely useless to find relationships especially if the dataset has thousands of instances.</p>
+
+<p>One key interaction implemented typically in SPLOMs is brushing with linked highlighting. This means a user can select a portion of data in a particular scatterplot using rectangular selection and the corresponding data points are selected in all the other scatterplots. Visually, this can be implemented by greying out the non-selected points and highlighting the selected points using a color.</p>
+
+<p>SPLOMs in viz terminology are also implementation of the “Small multiples” principles advocated by Edward Tufte. Coming back to the implementation of this in SPLOMs, we use a number of mouse event handlers and fairly straightforward draw calls to display the plots. For reading in the data, we implement a simple <code class="highlighter-rouge">TableReader</code> class to read in the data and the attribute names.</p>
+
+
+</article>
+
+
+  <hr class="dingbat" />
+
+
+
+
+
+  <aside class="author" role="complementary">
+    <div class="author">
   
     
   
@@ -163,80 +238,128 @@ Powered by Hydejack v6.5.0 (https://qwtel.com/hydejack/)
 
   
 
-  <h1 class="page-title hr" style="padding-bottom:1rem">Welcome</h1>
+  <h2 class="page-title hr">
+    About
+  </h2>
 
   <p>Computer Science student, Software Engineer.</p>
 
 
-  <!--[if gt IE 8]><!---->
-<style>.grid{margin-left:-1rem;display:flex;flex-wrap:wrap}.grid::after{content:"";display:table;clear:both}.col{float:left;padding-left:1rem;margin-bottom:1rem;width:100%;display:flex}@media screen and (min-width: 40em){.col-1-2{width:50%}}@media screen and (min-width: 54em){.col-1-2{width:100%}}@media screen and (min-width: 60em){.col-1-2{width:50%}}@media print{.grid{display:block}.col{display:block;width:50%}}.card{width:100%;background:#fff;border:1px solid #eee;text-align:center;padding-bottom:0.75rem;margin-bottom:1rem;contain:content;overflow:hidden;border-radius:.25rem;page-break-inside:avoid}.card>a>.img{margin-bottom:0;border-bottom:1px solid #eee;border-top:1px solid #eee;position:relative;top:-1px}.card>.name,.card>.caption{padding:0 1rem}.card>.name{display:block;text-align:center;font-size:1rem;margin-top:0.75rem;margin-bottom:0.25rem;color:inherit}.card>.caption{margin:0.25rem 0;font-size:smaller;color:#787878}.card>.caption>p{margin-bottom:0}
-</style>
-<!--<![endif]-->
-
-<h2 id="what-is-this-website-about">What is this website about?</h2>
-
-<p>Thank you for visiting my website! This is my personal website listing down a select portfolio of my projects, my resume and contact information.</p>
-
-<p>I have built this website to pen some random thoughts and provide an overview of my projects to an external audience.</p>
-
-
-
-  <h2>Selected Projects</h2>
   
+    <div class="sidebar-social">
+      <span class="sr-only">Social:</span>
+<ul>
   
     
 
-    <div class="grid">
-
-    <div class="col col-1-2">
-      
-        
-
-<div class="card">
-  <a href="/projects/Scatterplot-matrices-using-openFrameworks/" class="no-hover" data-flip="project">
-    <div class="img sixteen-nine">
-      
-        
-  
-
-  
-
-  <img
-    src="https://raw.githubusercontent.com/srmocher/of-SPLOMs/master/screenshots/A03P03ReportImg04.png"
-    
-    alt="Thumbnail"
-    srcset="https://raw.githubusercontent.com/srmocher/of-SPLOMs/master/screenshots/A03P03ReportImg04.png 1920w,https://raw.githubusercontent.com/srmocher/of-SPLOMs/master/screenshots/A03P03ReportImg04.png 960w,https://raw.githubusercontent.com/srmocher/of-SPLOMs/master/screenshots/A03P03ReportImg04.png 480w"
-    sizes="(min-width: 92em) 22.5rem, (min-width: 60em) 19.5rem, (min-width: 54em) 32rem, (min-width: 40em) 17.25rem, 100vw"
-  />
 
 
-      
-    </div>
+
+
+
+
+
+
+
+
+
+
+<li>
+  <a href="https://twitter.com/SridharMocherla" title="Twitter">
+    <span class="icon-twitter"></span>
+    <span class="sr-only">Twitter</span>
   </a>
-  <h3 class="name">
-    <a href="/projects/Scatterplot-matrices-using-openFrameworks/" data-flip="title">Scatterplot matrices using openFrameworks</a>
-  </h3>
-  
-    <div class="caption"><p>SPLOMs to visualize high dimensional quantitative data</p>
-</div>
-  
-</div>
+</li>
 
-      
+  
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li>
+  <a href="https://github.com/srmocher" title="GitHub">
+    <span class="icon-github"></span>
+    <span class="sr-only">GitHub</span>
+  </a>
+</li>
+
+  
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li>
+  <a href="http://stackoverflow.com/users/4031150/sridhar" title="Stack Overflow">
+    <span class="icon-stackoverflow"></span>
+    <span class="sr-only">Stack Overflow</span>
+  </a>
+</li>
+
+  
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li>
+  <a href="mailto:sridhar.mocherla@outlook.com" title="Email">
+    <span class="icon-mail"></span>
+    <span class="sr-only">Email</span>
+  </a>
+</li>
+
+  
+
+  
+
+  
+</ul>
+
     </div>
-
-    
-
-    
-
-    
   
-    
+</div>
 
-    
+  </aside>
 
-    <div class="col col-1-2">
-      
+
+
+
+
+
+  <h2>Other Projects</h2>
+  <div class="grid">
+    
+    
+      <div class="col col-1-2">
         
 
 <div class="card">
@@ -269,36 +392,48 @@ Powered by Hydejack v6.5.0 (https://qwtel.com/hydejack/)
   
 </div>
 
+      </div>
+    
+
+    
+    
+      <div class="col col-1-2">
+        
+
+<div class="card">
+  <a href="/projects/Interactive-Parallel-Coordinates/" class="no-hover" data-flip="project">
+    <div class="img sixteen-nine">
+      
+        
+  
+
+  
+
+  <img
+    src="/assets/img/parallelcoordinates.gif"
+    
+    alt="Thumbnail"
+    srcset="/assets/img/parallelcoordinates.gif 1920w,/assets/img/parallelcoordinates.gif 960w,/assets/img/parallelcoordinates.gif 480w"
+    sizes="(min-width: 92em) 22.5rem, (min-width: 60em) 19.5rem, (min-width: 54em) 32rem, (min-width: 40em) 17.25rem, 100vw"
+  />
+
+
       
     </div>
-
-    </div>
-
-    
-      
-    
-
-    
+  </a>
+  <h3 class="name">
+    <a href="/projects/Interactive-Parallel-Coordinates/" data-flip="title">Interactive Parallel Coordinates</a>
+  </h3>
   
-
-
-
+    <div class="caption"><p>PCs in openFrameworks with interaction</p>
+</div>
   
-  
-    <p class="read-more" style="margin-top:0">See <a class="heading" href="/projects/" data-flip="title">Projects</a> for more</p>
-  
+</div>
 
-
-
-  <h2 class="hr">Recent Posts</h2>
-  <ul class="related-posts" style="margin-bottom:2rem">
+      </div>
     
-  </ul>
+  </div>
 
-
-
-
-</article>
 
 
       
