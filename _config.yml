@@ -87,6 +87,17 @@ content:
         description: | # this will include new lines to allow paragraphs
                 I worked at the Steward Observatory under Dr. Chris Impey on building tools that were powered by machine learning to allow beginners to grasp astronomy and its concepts.
 
+      - layout: left
+        title: Microsoft
+        link: microsoft.com
+        # link_text: boringcompany.com
+        sub_title: Software Engineer/Service Engineer
+        caption: July 2014 - May 2016
+        quote: >
+          Working on enterprise B2B legacy codebase was a learning experience right out of college.
+        description: | # this will include new lines to allow paragraphs
+                Right out of college, I joined a rotational program at Microsoft that allowed me to work in 2 different roles (Service Engineer/Software Engineer) that allowed me exposure to enterprise-scale infrastructure and services in the Universal Store Team. I worked on improving the reliability and availability of the OEM application suite through disaster recovery automation across datacenters. As an SWE, I built a number of features that enabled hybrid connectivity (cloud/on-premise) for B2B message processing for orders between Microsoft and OEM/volume licensing partners.
+
   - title: Education # Title for the section
     layout: list # Type of content section (list/text)
     content:
