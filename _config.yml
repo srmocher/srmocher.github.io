@@ -1,0 +1,134 @@
+# Site
+repository: sproogen/resume-theme
+favicon: images/favicon.ico
+
+# Content configuration version
+version: 2
+
+# Personal info
+name: Sridhar Mocherla
+title: Software Engineer
+email: sridhar.mocherla@outlook.com
+website: https://sridharmocherla.com
+
+# Dark Mode (true/false/never)
+darkmode: false
+
+# Social links
+twitter_username: SridharMocherla
+github_username:  srmocherla
+# stackoverflow_username: "00000001"
+# dribbble_username: jekyll
+# facebook_username: jekyll
+# flickr_username: jekyll
+# instagram_username: jameswgrant
+linkedin_username: sridharmocherla
+# xing_username: jekyll
+# pinterest_username: jekyll
+# youtube_username: globalmtb
+# googleplus_username: +jekyll
+# orcid_username: 0000-0000-0000-0000
+
+# Additional icon links
+# additional_links:
+# - title: itsgoingto.be
+#   icon: fas fa-globe
+#   url: https://www.itsgoingto.be
+# - title: another link
+#   icon: font awesome brand icon name (eg. fab fa-twitter) (https://fontawesome.com/icons?d=gallery&m=free)
+#   url: Link url (eg. https://google.com)
+
+# Google Analytics and Tag Manager
+# Using more than one of these may cause issues with reporting
+# gtm: "GTM-0000000"
+# gtag: "UA-00000000-0"
+# google_analytics: "UA-00000000-0"
+
+# About Section
+# about_title: About Me
+about_profile_image: images/sridhar.jpeg
+about_content: | # this will include new lines to allow paragraphs
+  Hi, I'm Sridhar. I'm a generalist software engineer interested in solving problems at scale. I've worked on diverse domains - whether it's autonomous vehicle simulation infrastructure, improving developer experience for 5000+ engineers or enabling B2B integration between large businesses on cloud and hybrid infrastructure.
+
+content:
+  - title: Experience # Title for the section
+    layout: list # Type of content section (list/text)
+    content:
+      - layout: left
+        title: LinkedIn
+        link: linkedin.com
+        # link_text: boringcompany.com
+        sub_title: Senior Software Engineer
+        caption: April 2020 - February 2022
+        quote: >
+          We all need people who will give us feedback. That’s how we improve
+        description: | # this will include new lines to allow paragraphs
+                LinkedIn engineers use a wide array of in-house tools in their day-to-day workflow. I worked on making the lives of the owners of these tools easier by building improved support experience for these tools and enabling a continuous feedback system that engineers could use to provide their voice.
+
+      - layout: left
+        title: Cruise
+        link: getcruise.com
+        # link_text: boringcompany.com
+        sub_title: Senior Software Engineer
+        caption: June 2018 - April 2020
+        quote: >
+          Humans are bad at driving cars and machines can do better.
+        description: | # this will include new lines to allow paragraphs
+                Autonomous Vehicle engineers need reliable systems that allow them to run simulations, analyze results and iterate on their features in this development cycle. I worked on these systems and the services that encompassed it. I also worked on Continuous Integration (CI) infrastructure that allowed engineers to push their code changes quickly and reliably.
+
+      - layout: left
+        title: University of Arizona
+        link: as.arizona.edu
+        # link_text: boringcompany.com
+        sub_title: Research Assistant
+        caption: August 2016 - May 2018
+        quote: >
+          Democratizing astronomy knowledge through powerful visualizations.
+        description: | # this will include new lines to allow paragraphs
+                I worked at the Steward Observatory under Dr. Chris Impey on building tools that were powered by machine learning to allow beginners to grasp astronomy and its concepts.
+
+  - title: Education # Title for the section
+    layout: list # Type of content section (list/text)
+    content:
+      - layout: left
+        title: Chaitanya Bharathi Institute of Technology (CBIT)
+        caption: 2010 - 2014
+        sub_title: BE Computer Science & Engineering
+        quote: >
+          Established in 1979, CBIT is one of the top private institutes for engineering in the southern state of Telangana, India.
+        description: | # this will include new lines to allow paragraphs
+          Learned the ropes of basic CS, did some projects and used it as a platform for my entry in the industry.
+
+      - layout: left
+        title: University of Arizona
+        caption: 2016 - 2018
+        sub_title: MS Computer Science
+        quote: >
+          Established in 1885, The University of Arizona is one of the premier public universities in the Southwest United States and offers degrees in upto 300 majors.
+        description: | # this will include new lines to allow paragraphs
+          During my time at UofA, I took courses across a broad array of CS subjects, while also taking advanced research oriented courses in graph
+  
+  - title: A Little More About Me
+    layout: text
+    content: | # this will include new lines to allow paragraphs
+      Alongside my interest in software engineering some of my other interests and hobbies are:
+      - Hiking
+      - Soccer
+      - Board games
+
+      Look at this cool image  
+      ![Trees](./images/banff.jpeg "Lake Louise")
+
+# Footer
+footer_show_references: true
+# references_title: References on request (Override references text)
+
+# Build settings
+remote_theme: sproogen/resume-theme
+
+sass:
+  sass_dir: _sass
+  style: compressed
+
+plugins:
+ - jekyll-seo-tag
