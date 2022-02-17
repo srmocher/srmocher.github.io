@@ -117,7 +117,7 @@ content:
         quote: >
           Established in 1885, The University of Arizona is one of the premier public universities in the Southwest United States and offers degrees in upto 300 majors.
         description: | # this will include new lines to allow paragraphs
-          During my time at UofA, I took courses across a broad array of CS subjects, while also taking advanced research oriented courses in graph
+          During my time at UofA, I took courses across a broad array of CS subjects, while also taking advanced research oriented courses in graph theory.
   
   - title: A Little More About Me
     layout: text
