@@ -3,7 +3,7 @@ repository: sproogen/resume-theme
 favicon: images/favicon.ico
 
 # Content configuration version
-version: 3
+version: 2
 
 # Personal info
 name: Sridhar Mocherla
@@ -16,7 +16,7 @@ darkmode: true
 
 # Social links
 twitter_username: SridharMocherla
-github_username:  srmocher
+github_username: srmocher
 # stackoverflow_username: "00000001"
 # dribbble_username: jekyll
 # facebook_username: jekyll
@@ -48,7 +48,7 @@ linkedin_username: sridharmocherla
 # about_title: About Me
 about_profile_image: images/sridhar.jpeg
 about_content: | # this will include new lines to allow paragraphs
-  Hi, I'm Sridhar. I'm a generalist software engineer interested in solving problems at scale. Programming languages, compilers, build tools, monorepos and CI are some of my favorite problem spaces to work with. Always happy to chat about opportunities to improve developer experience and infra in teams with growing pains. 
+  Hi, I'm Sridhar. I'm a generalist software engineer interested in solving problems at scale. Programming languages, compilers, build tools, monorepos and CI are some of my favorite problem spaces to work with. Always happy to chat about opportunities to improve developer experience and infra in teams with growing pains.
 
 content:
   - title: Experience # Title for the section
@@ -59,9 +59,11 @@ content:
         link: brex.com
         sub_title: Senior Software Engineer
         caption: March 2022 - current
+        quote: >
+          There's no better way to overcome your imposter syndrome than working with Bazel.
         description: |
-                All things Bazel and CI. Reduced cloud infrastructure costs by a magnitude, support polygot development with Bazel, supercharge dev productivity through Cloud Development environments.
-          
+          All things Bazel and CI. Reduced cloud infrastructure costs by a magnitude, support polygot development with Bazel, supercharge dev productivity through Cloud Development environments.
+
       - layout: left
         title: LinkedIn
         link: linkedin.com
@@ -71,7 +73,7 @@ content:
         quote: >
           We all need people who will give us feedback. That’s how we improve
         description: | # this will include new lines to allow paragraphs
-                LinkedIn engineers use a wide array of in-house tools in their day-to-day workflow. I worked on making the lives of the owners of these tools easier by building improved support experience for these tools and enabling a continuous feedback system that engineers could use to provide their voice.
+          LinkedIn engineers use a wide array of in-house tools in their day-to-day workflow. I worked on making the lives of the owners of these tools easier by building improved support experience for these tools and enabling a continuous feedback system that engineers could use to provide their voice.
 
       - layout: left
         title: Cruise
@@ -82,7 +84,7 @@ content:
         quote: >
           Humans are bad at driving cars and machines can do better.
         description: | # this will include new lines to allow paragraphs
-                Autonomous Vehicle engineers need reliable systems that allow them to run simulations, analyze results and iterate on their features in this development cycle. I worked on these systems and the services that encompassed it. I also worked on Continuous Integration (CI) infrastructure that allowed engineers to push their code changes quickly and reliably.
+          Autonomous Vehicle engineers need reliable systems that allow them to run simulations, analyze results and iterate on their features in this development cycle. I worked on these systems and the services that encompassed it. I also worked on Continuous Integration (CI) infrastructure that allowed engineers to push their code changes quickly and reliably.
 
       - layout: left
         title: University of Arizona
@@ -93,7 +95,7 @@ content:
         quote: >
           Democratizing astronomy knowledge through powerful visualizations.
         description: | # this will include new lines to allow paragraphs
-                I worked at the Steward Observatory under Dr. Chris Impey on building tools that were powered by machine learning to allow beginners to grasp astronomy and its concepts.
+          I worked at the Steward Observatory under Dr. Chris Impey on building tools that were powered by machine learning to allow beginners to grasp astronomy and its concepts.
 
       - layout: left
         title: Microsoft
@@ -104,7 +106,7 @@ content:
         quote: >
           Working on enterprise B2B legacy codebase was a learning experience right out of college.
         description: | # this will include new lines to allow paragraphs
-                Right out of college, I joined a rotational program at Microsoft that allowed me to work in 2 different roles (Service Engineer/Software Engineer) that allowed me exposure to enterprise-scale infrastructure and services in the Universal Store Team. I worked on improving the reliability and availability of the OEM application suite through disaster recovery automation across datacenters. As an SWE, I built a number of features that enabled hybrid connectivity (cloud/on-premise) for B2B message processing for orders between Microsoft and OEM/volume licensing partners.
+          Right out of college, I joined a rotational program at Microsoft that allowed me to work in 2 different roles (Service Engineer/Software Engineer) that allowed me exposure to enterprise-scale infrastructure and services in the Universal Store Team. I worked on improving the reliability and availability of the OEM application suite through disaster recovery automation across datacenters. As an SWE, I built a number of features that enabled hybrid connectivity (cloud/on-premise) for B2B message processing for orders between Microsoft and OEM/volume licensing partners.
 
   - title: Education # Title for the section
     layout: list # Type of content section (list/text)
@@ -126,7 +128,7 @@ content:
           Established in 1885, The University of Arizona is one of the premier public universities in the Southwest United States and offers degrees in upto 300 majors.
         description: | # this will include new lines to allow paragraphs
           During my time at UofA, I took courses across a broad array of CS subjects, while also taking advanced research oriented courses in graph theory.
-  
+
   - title: A Little More About Me
     layout: text
     content: | # this will include new lines to allow paragraphs
@@ -150,4 +152,4 @@ sass:
   style: compressed
 
 plugins:
- - jekyll-seo-tag
+  - jekyll-seo-tag
