@@ -3,7 +3,7 @@ repository: sproogen/resume-theme
 favicon: images/favicon.ico
 
 # Content configuration version
-version: 2
+version: 3
 
 # Personal info
 name: Sridhar Mocherla
@@ -12,7 +12,7 @@ email: sridhar.mocherla@outlook.com
 website: https://sridharmocherla.com
 
 # Dark Mode (true/false/never)
-darkmode: false
+darkmode: true
 
 # Social links
 twitter_username: SridharMocherla
@@ -48,12 +48,20 @@ linkedin_username: sridharmocherla
 # about_title: About Me
 about_profile_image: images/sridhar.jpeg
 about_content: | # this will include new lines to allow paragraphs
-  Hi, I'm Sridhar. I'm a generalist software engineer interested in solving problems at scale. I've worked on diverse domains - whether it's autonomous vehicle simulation infrastructure, improving developer experience for 5000+ engineers or enabling B2B integration between large businesses on cloud and hybrid infrastructure.
+  Hi, I'm Sridhar. I'm a generalist software engineer interested in solving problems at scale. Programming languages, compilers, build tools, monorepos and CI are some of my favorite problem spaces to work with. Always happy to chat about opportunities to improve developer experience and infra in teams with growing pains. 
 
 content:
   - title: Experience # Title for the section
     layout: list # Type of content section (list/text)
     content:
+      - layout: left
+        title: Brex
+        link: brex.com
+        sub_title: Senior Software Engineer
+        caption: March 2022 - current
+        description: |
+                All things Bazel and CI. Reduced cloud infrastructure costs by a magnitude, support polygot development with Bazel, supercharge dev productivity through Cloud Development environments.
+          
       - layout: left
         title: LinkedIn
         link: linkedin.com
