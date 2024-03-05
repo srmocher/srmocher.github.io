@@ -50,6 +50,8 @@ about_profile_image: images/sridhar.jpeg
 about_content: | # this will include new lines to allow paragraphs
   Hi, I'm Sridhar. I'm a generalist software engineer interested in solving problems at scale. Programming languages, compilers, build tools, monorepos and CI are some of my favorite problem spaces to work with. Always happy to chat about opportunities to improve developer experience and infra in teams with growing pains.
 
+  Note: If you're a recruiter hiring for a company from the US, please reach out only if you sponsor work visas. It will save my time and yours. :)
+
 content:
   - title: Experience # Title for the section
     layout: list # Type of content section (list/text)
