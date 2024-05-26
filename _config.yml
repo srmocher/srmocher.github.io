@@ -30,10 +30,10 @@ linkedin_username: sridharmocherla
 # orcid_username: 0000-0000-0000-0000
 
 # Additional icon links
-# additional_links:
-# - title: itsgoingto.be
-#   icon: fas fa-globe
-#   url: https://www.itsgoingto.be
+additional_links:
+ - title: Leveraging Bazel Remote Caching and Execution For Cross-Platform Builds (Mac/Linux)
+   icon: fa-solid fa-rocket
+   url: https://medium.com/@sridharmocherla/leveraging-bazel-remote-caching-and-execution-for-cross-platform-builds-mac-linux-1956e6f3cb22
 # - title: another link
 #   icon: font awesome brand icon name (eg. fab fa-twitter) (https://fontawesome.com/icons?d=gallery&m=free)
 #   url: Link url (eg. https://google.com)
