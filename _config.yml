@@ -48,7 +48,7 @@ additional_links:
 # about_title: About Me
 about_profile_image: images/sridhar.jpeg
 about_content: | # this will include new lines to allow paragraphs
-  Hi, I'm Sridhar. I'm a generalist software engineer interested in solving problems at scale. Programming languages, compilers, build tools, monorepos and CI are some of my favorite problem spaces to work with. Always happy to chat about opportunities to improve developer experience and infra in teams with growing pains.
+  Hi, I'm Sridhar. I'm a generalist software engineer interested in solving problems at scale. I've worked as a generalist engineer with an emphasis developer experience in medium-to-large organizations with outsized impact. Always happy to chat about opportunities in teams with growing pains.
 
   Note: If you're a recruiter hiring for a company from the US, please reach out only if you sponsor work visas. It will save my time and yours. :)
 
@@ -61,10 +61,10 @@ content:
         link: brex.com
         sub_title: Senior Software Engineer/Staff Software Engineer
         caption: March 2022 - current
-        quote: >
-          There's no better way to overcome your imposter syndrome than working with Bazel.
         description: |
-          All things Bazel and CI. Reduced cloud infrastructure costs by a magnitude, support polygot development with Bazel, supercharge dev productivity through Cloud Development environments.
+          All things Bazel and CI. Reduced cloud infrastructure costs by a magnitude, support polygot development with Bazel, supercharge dev productivity through Cloud Development environments. 
+          
+          Enhance GraphQL devex and improve Brex GraphQL API performance by 30% through migration to a Rust based implementation.
 
       - layout: left
         title: LinkedIn
