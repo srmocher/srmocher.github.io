@@ -31,12 +31,12 @@ linkedin_username: sridharmocherla
 
 # Additional icon links
 additional_links:
- - title: Leveraging Bazel Remote Caching and Execution For Cross-Platform Builds (Mac/Linux)
-   icon: fa-solid fa-rocket
+ - title: Bazel Remote Caching Article
+   icon: fas fa-rocket
    url: https://medium.com/@sridharmocherla/leveraging-bazel-remote-caching-and-execution-for-cross-platform-builds-mac-linux-1956e6f3cb22
-# - title: another link
-#   icon: font awesome brand icon name (eg. fab fa-twitter) (https://fontawesome.com/icons?d=gallery&m=free)
-#   url: Link url (eg. https://google.com)
+ - title: Bazel-Kotlin VSCode Extension
+   icon: fas fa-code
+   url: https://marketplace.visualstudio.com/items?itemName=Brex.bazel-kotlin
 
 # Google Analytics and Tag Manager
 # Using more than one of these may cause issues with reporting
@@ -48,11 +48,40 @@ additional_links:
 # about_title: About Me
 about_profile_image: images/sridhar.jpeg
 about_content: | # this will include new lines to allow paragraphs
-  Hi, I'm Sridhar. I'm a generalist software engineer interested in solving problems at scale. I've worked as a generalist engineer with an emphasis developer experience in medium-to-large organizations with outsized impact. Always happy to chat about opportunities in teams with growing pains.
+  Hi, I'm Sridhar. I'm a staff software engineer specializing in developer productivity, build systems, and polyglot development at scale. I have deep expertise in Bazel, CI/CD optimization, and have made significant open-source contributions to the JVM/Kotlin ecosystem.
+
+  My work spans across multiple languages (Go, Kotlin, TypeScript, Python) and focuses on solving complex infrastructure challenges in large monorepos. I'm passionate about creating tools that make developers more productive.
 
   Note: If you're a recruiter hiring for a company from the US, please reach out only if you sponsor work visas. It will save my time and yours. :)
 
 content:
+  - title: Open Source Contributions # Title for the section
+    layout: list # Type of content section (list/text)
+    content:
+      - layout: left
+        title: Bazel-Kotlin Language Server
+        link: https://marketplace.visualstudio.com/items?itemName=Brex.bazel-kotlin
+        sub_title: VSCode Extension
+        caption: Published on Visual Studio Marketplace
+        description: |
+          Created a VSCode extension that adds Bazel support to the Kotlin language server, enabling better IDE integration for Kotlin projects built with Bazel. This extension improves developer experience by providing proper language support, navigation, and error reporting in Bazel-managed Kotlin codebases.
+
+      - layout: left
+        title: Gradle Dependencies in Bazel
+        link: https://github.com/bazel-contrib/rules_jvm_external/pull/1357
+        sub_title: rules_jvm_external Contribution
+        caption: Merged PR to bazel-contrib
+        description: |
+          Added Gradle support to resolve JVM dependencies with Bazel, specifically targeting improved Kotlin Multiplatform support. This contribution enables teams to leverage Gradle's dependency resolution while maintaining Bazel's build performance and reproducibility benefits.
+
+      - layout: left
+        title: Bazel Remote Caching Guide
+        link: https://medium.com/@sridharmocherla/leveraging-bazel-remote-caching-and-execution-for-cross-platform-builds-mac-linux-1956e6f3cb22
+        sub_title: Technical Article
+        caption: Published on Medium
+        description: |
+          Authored a comprehensive guide on leveraging Bazel remote caching for JVM projects in hybrid mode (remote execution and local execution). The article covers practical implementation strategies for cross-platform builds on Mac/Linux environments.
+
   - title: Experience # Title for the section
     layout: list # Type of content section (list/text)
     content:
@@ -62,9 +91,21 @@ content:
         sub_title: Senior Software Engineer/Staff Software Engineer
         caption: March 2022 - current
         description: |
-          All things Bazel and CI. Reduced cloud infrastructure costs by a magnitude, support polygot development with Bazel, supercharge dev productivity through Cloud Development environments. 
+          **Build Systems & Developer Productivity:**
+          - Architected Bazel-based polyglot development environment supporting Go, Kotlin, TypeScript, Python, and Protobuf in a large monorepo
+          - Reduced cloud infrastructure costs by an order of magnitude through optimized build and caching strategies
+          - Built Cloud Development Environments to accelerate developer onboarding and productivity
+          - Created custom Bazel rules for GraphQL supergraph composition and subgraph validation to prevent API breaking changes
           
-          Enhance GraphQL devex and improve Brex GraphQL API performance by 30% through migration to a Rust based implementation.
+          **GraphQL & Performance:**
+          - Migrated from Apollo Gateway to Apollo Router (Rust implementation) improving GraphQL API performance by 30%
+          - Led federated GraphQL architecture improvements and developer experience enhancements
+          - Extensive work with JVM frameworks including Micronaut for microservice development
+          
+          **CI/CD & Infrastructure:**
+          - Optimized Buildkite CI/CD pipelines significantly reducing build times
+          - Integrated GitOps with FluxCD on Kubernetes to accelerate microservice development
+          - Managed AWS infrastructure and container orchestration for scalable deployment pipelines
 
       - layout: left
         title: LinkedIn
@@ -75,7 +116,11 @@ content:
         quote: >
           We all need people who will give us feedback. That’s how we improve
         description: | # this will include new lines to allow paragraphs
-          LinkedIn engineers use a wide array of in-house tools in their day-to-day workflow. I worked on making the lives of the owners of these tools easier by building improved support experience for these tools and enabling a continuous feedback system that engineers could use to provide their voice.
+          **Developer Experience & Documentation:**
+          - Improved documentation discoverability across LinkedIn's engineering organization
+          - Built real-time feedback systems enabling engineers to provide input on tooling and processes
+          - Enhanced support experiences for LinkedIn's extensive suite of internal developer tools
+          - Focused on developer productivity improvements and streamlined engineering workflows
 
       - layout: left
         title: Cruise
@@ -86,7 +131,12 @@ content:
         quote: >
           Humans are bad at driving cars and machines can do better.
         description: | # this will include new lines to allow paragraphs
-          Autonomous Vehicle engineers need reliable systems that allow them to run simulations, analyze results and iterate on their features in this development cycle. I worked on these systems and the services that encompassed it. I also worked on Continuous Integration (CI) infrastructure that allowed engineers to push their code changes quickly and reliably.
+          **Large-Scale Distributed Systems & Build Infrastructure:**
+          - Built large-scale distributed systems enabling testing simulations on large cloud workers for autonomous vehicle development
+          - Architected systems allowing engineers to iterate rapidly on ML models and autonomous driving features
+          - Maintained C++/Python monorepo with Bazel build system, including custom rules and build performance optimization
+          - Implemented Remote Build Execution (RBE) for improved build performance and scalability
+          - Led CI migration from CircleCI to Buildkite significantly improving build performance and reliability
 
       - layout: left
         title: University of Arizona
@@ -130,6 +180,34 @@ content:
           Established in 1885, The University of Arizona is one of the premier public universities in the Southwest United States and offers degrees in upto 300 majors.
         description: | # this will include new lines to allow paragraphs
           During my time at UofA, I took courses across a broad array of CS subjects, while also taking advanced research oriented courses in graph theory.
+
+  - title: Technical Skills & Expertise
+    layout: text
+    content: | # this will include new lines to allow paragraphs
+      **Build Systems & Developer Productivity:**
+      - Bazel (Expert): Custom rules, Remote Build Execution (RBE), polyglot builds, performance optimization
+      - CI/CD: Buildkite, CircleCI, GitHub Actions, build performance optimization
+      - Developer Tooling: VSCode extensions, language server protocols, IDE integrations
+
+      **Programming Languages & Frameworks:**
+      - **Go**: Microservices, distributed systems, performance-critical applications
+      - **Kotlin**: Multiplatform development, JVM ecosystem
+      - **TypeScript/JavaScript**: Full-stack web development, GraphQL, Node.js
+      - **Python**: Build tooling, automation, data processing, ML pipelines
+      - **Rust**: GraphQL federation (Apollo Router), systems programming
+      - **Protobuf**: Schema design, code generation, cross-language serialization
+
+      **Infrastructure & Cloud:**
+      - **AWS**: ECS, EKS, Lambda, S3, infrastructure automation
+      - **Kubernetes**: GitOps with FluxCD, microservice orchestration
+      - **GraphQL**: Federated architecture, Apollo Gateway/Router, schema composition
+      - **JVM Ecosystem**: Micronaut, Gradle, dependency management
+
+      **Specialized Areas:**
+      - Large monorepo management and tooling
+      - Remote caching and distributed build systems
+      - Polyglot development environments
+      - Developer experience and productivity optimization
 
   - title: A Little More About Me
     layout: text
